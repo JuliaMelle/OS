@@ -3,27 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="global.css">
-    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/scan.css">
     <title>Disk Scheduling Solver</title>
 </head>
-<body>
-    <div class="form-container table-border">
-    <h2 class="left-fullw">Disk Scheduling Solver</h2>
-    <form id="diskForm" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <label for="currentPosition">Current Position:</label>
-        <input type="number" name="currentPosition" required>
+<body class="d-flex justify-content-center align-items-center flex-column" style="margin: 50px; background-color:black">
+   <div class="form form-container table-border mt-5" style="width: 50%;">
+       <h2 >Disk Scheduling Solver</h2>
+       <form id="diskForm" method="post" class="container">
+   <div class="mb-3">
+       <label for="currentPosition" class="form-label">Current Position:</label>
+       <input type="number" name="currentPosition" class="form-control" required>
+   </div>
 
-        <label for="trackSize">Track Size:</label>
-        <input type="number" name="trackSize" required>
+   <div class="mb-3">
+       <label for="trackSize" class="form-label">Track Size:</label>
+       <input type="number" name="trackSize" class="form-control" required>
+   </div>
 
-        <label for="seekRate">Seek Rate:</label>
-        <input type="number" name="seekRate" required>
+   <div class="mb-3">
+       <label for="seekRate" class="form-label">Seek Rate:</label>
+       <input type="number" name="seekRate" class="form-control" required>
+   </div>
 
-        <label for="requests">Requests (space or comma-separated):</label>
-        <input type="text" name="requests" required>
-        <input type="submit" name="calculate">
-    </form>
+   <div class="mb-3">
+       <label for="requests" class="form-label">Requests:</label>
+       <input type="text" name="requests" class="form-control" required>
+   </div>
+   <input type="submit" name="calculate" class="btn btn-primary">
+</form>
+
 </div>
 
     <?php
@@ -113,39 +122,31 @@
             // Calculate total head movement and seek time
             $totalHeadMovement = $seek_count;
             $seekTime = $totalHeadMovement / $GLOBALS['seekRate'];
-
-            // Display results
-            // start main div
-            echo '<div>';
+?>
             
-            // start container
-            echo '<div class="scan-container table-border">';
+            <div class="form container w-50 m-4 h-90" >
+   <div class="row">
+       <div class="col">
+           <p>Total number of seek operations</p>
+           <h2><?php echo $seek_count; ?></h2>
+       </div>
 
-            echo '<div class="seek-operations">
-            <p class="left-fullw">Total number of seek operations</p>
-            <h2 class="left-fullw">'. $seek_count. '</h2>
-            </div>';
+       <div class="col">
+           <p>Total head movement</p>
+           <h2><?php echo $totalHeadMovement; ?></h2>
+       </div>
 
-            echo '<div class="seek-operations">
-            <p class="left-fullw">Total head movement</p>
-            <h2 class="left-fullw">'. $totalHeadMovement. '</h2>
-            </div>';
+       <div class="col">
+           <p>Seek time</p>
+           <h2><?php echo $seekTime; ?></h2>
+       </div>
+   </div>
 
-            echo '<div class="seek-operations">
-            <p class="left-fullw">Seek time</p>
-            <h2 class="left-fullw">'. $seekTime. '</h2>
-            </div>';
-
-            // end container        
-            echo '</div>';
-
-            // another container
-            echo '<div class="scan-container table-border">';
-            // echo '<div class="seek-operations">';
-            echo '<p class="left-fullw">Seek Sequence is: </p>';
-
+            
+           <p >Seek Sequence is: </p>
+<?php
             for ($i = 0; $i < count($seek_sequence); $i++) {
-                echo '<div class="seek-sequence">' . $seek_sequence[$i]. '</div>';
+                echo '<div>' . $seek_sequence[$i]. '</div>';
             }
             // echo '</div>';
 
@@ -159,6 +160,7 @@
         // Display results
         SCAN($requests, $currentPosition, "left");
     }
-    ?>
+    ?></div>
+  
 </body>
 </html>
