@@ -7,7 +7,31 @@
     <link rel="stylesheet" href="css/scan.css">
     <title>Disk Scheduling Solver</title>
 </head>
-<body class="d-flex justify-content-center align-items-center flex-column" style="margin: 50px; background-color:black">
+<body style="background-color: black;">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">OS GROUP 8</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="Priority_NP.php">Prio (NP)</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="MQSFINAL.php">MQS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="SCAN.php">SCAN</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="d-flex justify-content-center align-items-center">
    <div class="form form-container table-border mt-5" style="width: 50%;">
        <h2 >Disk Scheduling Solver</h2>
        <form id="diskForm" method="post" class="container">
@@ -32,7 +56,7 @@
    </div>
    <input type="submit" name="calculate" class="btn btn-primary">
 </form>
-
+</div>
 </div>
 
     <?php
@@ -52,7 +76,7 @@
             $distance = 0;
             $cur_track = 0;
             $left = [];
-            $right = [];
+            $right = [];        
             $seek_sequence = [];
 
             // Appending end values

@@ -11,11 +11,35 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous">
     </script>
     <title>Scheduling Simulation</title>
+    
 </head>
 
-<body class="mt-4" style="background-color: black;" >
+<body style="background-color: black;">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">OS GROUP 8</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="Priority_NP.php">Prio (NP)</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="MQSFINAL.php">MQS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="SCAN.php">SCAN</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
     <div class="container">
-            <h2>Scheduling Simulation</h2>
+            <h2>MQS Scheduling Simulation</h2>
         <div class="mb-3">
             <form method="post" action="">
                 <label for="arrival_time">Arrival Time:</label>
@@ -83,16 +107,14 @@
 
 
         // Display Gantt chart and table
-        echo '<h3>Gantt Chart</h3>';
-        echo '<div>';
-        for ($i = 0; $i < $n; $i++) {
-            echo 'P' . ($i + 1) . ' | ';
-        }
-        echo '</div>';
+        // echo '<h3>Gantt Chart</h3>';
+        // echo '<div>';
+        // for ($i = 0; $i < $n; $i++) {
+        //     echo 'P' . ($i + 1) . ' | ';
+        //}
+        //echo '</div>';
         
         echo '<br>';
-
-
 
         echo '<h3>Table</h3>';
         echo '<table>';

@@ -15,8 +15,31 @@
 
 </head>
 
-<body class="mt-4" style="background-color: black;" >
-<div class="d-flex justify-content-center align-items-center flex-column m-2 "> 
+<body style="background-color: black;" >
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">OS GROUP 8</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="Priority_NP.php">Prio (NP)</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="MQSFINAL.php">MQS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="SCAN.php">SCAN</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="d-flex justify-content-center align-items-center flex-column m-2 mt-5 pt-5"> 
     <div class=" form container" style="height: 100%;width:50%">
 
         <form method="post"  class="d-flex flex-column" style="width:100%">
