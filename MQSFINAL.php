@@ -67,7 +67,6 @@
         $queues = isset($_POST['queue']) ? explode(' ', trim($_POST['queue'])) : [];
 
 
-        // FCFS Scheduling Algorithm
         $n = count($arrivalTimes);
 
 
@@ -104,15 +103,6 @@
 
         // Calculate average turnaround time
         $averageTurnaroundTime = $n > 0 ? array_sum($turnaroundTimes) / $n : 0;
-
-
-        // Display Gantt chart and table
-        // echo '<h3>Gantt Chart</h3>';
-        // echo '<div>';
-        // for ($i = 0; $i < $n; $i++) {
-        //     echo 'P' . ($i + 1) . ' | ';
-        //}
-        //echo '</div>';
         
         echo '<br>';
 

@@ -36,8 +36,8 @@
        <h2 >Disk Scheduling Solver</h2>
        <form id="diskForm" method="post" class="container">
    <div class="mb-3">
-       <label for="currentPosition" class="form-label">Current Position:</label>
-       <input type="number" name="currentPosition" class="form-control" required>
+       <label for="current_position" class="form-label">Current Position:</label>
+       <input type="number" name="current_position" class="form-control" required>
    </div>
 
    <div class="mb-3">
@@ -61,16 +61,15 @@
 
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['calculate'])) {
-        $currentPosition = isset($_POST["currentPosition"]) ? (int)$_POST["currentPosition"] : 0;
+        $current_position = isset($_POST["current_position"]) ? (int)$_POST["current_position"] : 0;
         $trackSize = isset($_POST["trackSize"]) ? (int)$_POST["trackSize"] : 0;
         $seekRate = isset($_POST["seekRate"]) ? (int)$_POST["seekRate"] : 0;
         $requestsString = isset($_POST["requests"]) ? $_POST["requests"] : '';
 
-        // Parse requests from the input string
         $requests = preg_split('/[\s,]+/', $requestsString, -1, PREG_SPLIT_NO_EMPTY);
         $requests = array_map('intval', $requests);
 
-        // Perform SCAN algorithm calculation
+
         function SCAN($arr, $head, $direction) {
             $seek_count = 0;
             $distance = 0;
@@ -79,9 +78,7 @@
             $right = [];        
             $seek_sequence = [];
 
-            // Appending end values
-            // which has to be visited
-            // before reversing the direction
+   
             if ($direction == "left") {
                 array_push($left, 0);
             } elseif ($direction == "right") {
@@ -97,29 +94,26 @@
                 }
             }
 
-            // Sorting left and right vectors
+            //  left and right 
             sort($left);
             sort($right);
 
-            // Run the while loop two times.
-            // One by one scanning right
-            // and left of the head
+    
             $run = 2;
             while ($run-- > 0) {
                 if ($direction == "left") {
                     for ($i = count($left) - 1; $i >= 0; $i--) {
                         $cur_track = $left[$i];
 
-                        // Appending current track to seek sequence
                         array_push($seek_sequence, $cur_track);
 
-                        // Calculate absolute distance
+                        //  absolute distance
                         $distance = abs($cur_track - $head);
 
-                        // Increase the total count
+                        //  the total count
                         $seek_count += $distance;
 
-                        // Accessed track is now the new head
+                      
                         $head = $cur_track;
                     }
                     $direction = "right";
@@ -127,25 +121,25 @@
                     for ($i = 0; $i < count($right); $i++) {
                         $cur_track = $right[$i];
 
-                        // Appending current track to seek sequence
+                     
                         array_push($seek_sequence, $cur_track);
 
-                        // Calculate absolute distance
+                        // absolute distance
                         $distance = abs($cur_track - $head);
 
-                        // Increase the total count
+                        //  the total count
                         $seek_count += $distance;
 
-                        // Accessed track is now new head
+                        //  track is now new head
                         $head = $cur_track;
                     }
                     $direction = "left";
                 }
             }
 
-            // Calculate total head movement and seek time
-            $totalHeadMovement = $seek_count;
-            $seekTime = $totalHeadMovement / $GLOBALS['seekRate'];
+            //  total head movement and seek time
+            $total_head_movement = $seek_count;
+            $seekTime = $total_head_movement / $GLOBALS['seekRate'];
 ?>
             
             <div class="form container w-50 m-4 h-90" >
@@ -157,7 +151,7 @@
 
        <div class="col">
            <p>Total head movement</p>
-           <h2><?php echo $totalHeadMovement; ?></h2>
+           <h2><?php echo $total_head_movement; ?></h2>
        </div>
 
        <div class="col">
@@ -182,7 +176,7 @@
         }
 
         // Display results
-        SCAN($requests, $currentPosition, "left");
+        SCAN($requests, $current_position, "left");
     }
     ?></div>
   
