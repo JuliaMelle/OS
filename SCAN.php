@@ -41,29 +41,29 @@
    </div>
 
    <div class="mb-3">
-       <label for="trackSize" class="form-label">Track Size:</label>
-       <input type="number" name="trackSize" class="form-control" required>
+       <label for="track_size" class="form-label">Track Size:</label>
+       <input type="number" name="track_size" class="form-control" required>
    </div>
 
    <div class="mb-3">
-       <label for="seekRate" class="form-label">Seek Rate:</label>
-       <input type="number" name="seekRate" class="form-control" required>
+       <label for="seek_rate" class="form-label">Seek Rate:</label>
+       <input type="number" name="seek_rate" class="form-control" required>
    </div>
 
    <div class="mb-3">
        <label for="requests" class="form-label">Requests:</label>
        <input type="text" name="requests" class="form-control" required>
    </div>
-   <input type="submit" name="calculate" class="btn btn-primary">
+   <input type="submit" name="calcu" class="btn btn-primary">
 </form>
 </div>
 </div>
 
     <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['calculate'])) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['calcu'])) {
         $current_position = isset($_POST["current_position"]) ? (int)$_POST["current_position"] : 0;
-        $trackSize = isset($_POST["trackSize"]) ? (int)$_POST["trackSize"] : 0;
-        $seekRate = isset($_POST["seekRate"]) ? (int)$_POST["seekRate"] : 0;
+        $track_size = isset($_POST["track_size"]) ? (int)$_POST["track_size"] : 0;
+        $seek_rate = isset($_POST["seek_rate"]) ? (int)$_POST["seek_rate"] : 0;
         $requestsString = isset($_POST["requests"]) ? $_POST["requests"] : '';
 
         $requests = preg_split('/[\s,]+/', $requestsString, -1, PREG_SPLIT_NO_EMPTY);
@@ -82,7 +82,7 @@
             if ($direction == "left") {
                 array_push($left, 0);
             } elseif ($direction == "right") {
-                array_push($right, $GLOBALS['trackSize'] - 1);
+                array_push($right, $GLOBALS['track_size'] - 1);
             }
 
             for ($i = 0; $i < count($arr); $i++) {
@@ -139,12 +139,13 @@
 
             //  total head movement and seek time
             $total_head_movement = $seek_count;
-            $seekTime = $total_head_movement / $GLOBALS['seekRate'];
+            $seekTime = $total_head_movement / $GLOBALS['seek_rate'];
 ?>
-            
+            <div class="d-flex justify-content-center align-items-center">
+
             <div class="form container w-50 m-4 h-90" >
    <div class="row">
-       <div class="col">
+       <div class="col ">
            <p>Total number of seek operations</p>
            <h2><?php echo $seek_count; ?></h2>
        </div>
@@ -179,6 +180,6 @@
         SCAN($requests, $current_position, "left");
     }
     ?></div>
-  
+     </div>
 </body>
 </html>
