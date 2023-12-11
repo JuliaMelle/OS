@@ -54,7 +54,7 @@
        <label for="requests" class="form-label">Requests:</label>
        <input type="text" name="requests" class="form-control" required>
    </div>
-   <input type="submit" name="calcu" class="btn btn-primary">
+   <input type="submit" name="calcu"  class="btn btn-dark" style="width: 100%;">
 </form>
 </div>
 </div>
@@ -146,7 +146,7 @@
             <div class="form container w-50 m-4 h-90" >
    <div class="row">
        <div class="col ">
-           <p>Total number of seek operations</p>
+           <p>Total No. of seek operations</p>
            <h2><?php echo $seek_count; ?></h2>
        </div>
 
