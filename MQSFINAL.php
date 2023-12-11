@@ -39,7 +39,7 @@
 </nav>
 
     <div class="container">
-            <h2>MQS Scheduling Simulation</h2>
+            <h2>MQS Simulation</h2>
         <div class="mb-3">
             <form method="post" action="">
                 <label for="arrival_time">Arrival Time:</label>
